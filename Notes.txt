@@ -1,0 +1,17 @@
+How to push to github
+git add .
+git commit -m "message"
+git push
+
+***GIT Seminar w/Paul***
+
+version control system used to track any file. Most notably used in development
+Git commits are checksummed using SHA-1 meaning no corrupt files without knowing about it.
+
+Three states of GIT
+- modified
+file changed, but it has not been committed
+- staging
+files that are marked to go into the next commit snapshot
+-commit stage
+data safely stored in the local database (sucs)
