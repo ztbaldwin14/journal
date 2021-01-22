@@ -10,8 +10,42 @@ Git commits are checksummed using SHA-1 meaning no corrupt files without knowing
 
 Three states of GIT
 - modified
-file changed, but it has not been committed
+file changed, but it has not been committed (ex: normal work, or saving)
 - staging
-files that are marked to go into the next commit snapshot
+files that are marked to go into the next commit snapshot (utilizing git add script.js)
 -commit stage
-data safely stored in the local database (sucs)
+data safely stored in the local database (such as vm box, docker, computer, etc.)
+
+to start version track/control
+"git init"
+creates new project
+your project should never be inside another project folder in order to avoid inverse tre tracking issues
+
+stage our files for a commit
+"git add <file>"
+
+use "git status" to check on file staging
+
+to commit your files, use "git commit -m "<your message>"", command.
+
+to create new branch -- git branch <new_branch_name>
+
+"git branch <new_branch_name>" creates a new branch and that's it
+
+"git checkout -b <new_branch_name>" creates a new branch and switches to that branch.
+
+to switch between branches, use "git checkout <branch name>"
+
+to delete a branch, use "git branch -D <branch_name>"
+
+to unstage a commit, use "git reset <file_name>"
+to remove an entire commit, use "git rest --hard <commit hash BEFORE the one you want removed>
+
+to add remote branch
+    check if any exist using "git remote -v"
+    if none exist, and you've created a repo on github
+    run "git remote add <name_of_remote_stream> <github url>
+
+to push to github
+    "git push <name_of_remote_stream> <name_of_branch>
+    you must sit on the branch that you are pushing up
