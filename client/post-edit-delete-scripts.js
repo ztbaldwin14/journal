@@ -73,38 +73,21 @@ function editJournal(postId) {
  *** DELETE JOURNAL ***
  ************************** */
 function deleteJournal(postId) {
-  console.log("deleteJournal Function Called");
+  console.log('deleteJournal working')
+  console.log(postId)
+
+  const fetch_url = `http://localhost:3000/journal/delete/${postId}`
+  const accessToken = localStorage.getItem('SessionToken')
+
+  fetch(fetch_url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': accessToken
+    }
+  })
+  .then(response => {
+    console.log(response);
+    displayMine()
+  })
 }
-
-// function postJournal() {
-//   console.log("postJournal Function Called");
-//   let title = document.getElementById("title").value;
-//   let date = document.getElementById("date").value;
-//   let entry = document.getElementById("entry").value;
-
-//   let bodyObj = {
-//     journal: {
-//       title: title,
-//       date: date,
-//       entry: entry,
-//     },
-//   };
-
-//   var myHeaders = new Headers();
-//   myHeaders.append("Authorization", localStorage.getItem("SessionToken"));
-//   myHeaders.append("Content-Type", "application/json");
-
-//   var raw = JSON.stringify(bodyObj);
-
-//   var requestOptions = {
-//     method: "POST",
-//     headers: myHeaders,
-//     body: raw,
-//     redirect: "follow",
-//   };
-
-//   fetch("http://localhost:3000/journal/create", requestOptions)
-//     .then((response) => response.text())
-//     .then((result) => console.log(result))
-//     .catch((error) => console.log("error", error));
-// }
