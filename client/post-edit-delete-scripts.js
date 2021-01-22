@@ -44,10 +44,10 @@ function editJournal(postId) {
     input.setAttribute('id', 'updatedEntry')
     input.setAttribute('placeholder', 'Edit your journal entry')
 
-  } else  {
+  } else {
 
     let updated = document.getElementById('updatedEntry').value
-    let updatedEntry = { journal: { entry: updated }  };
+    let updateEntry = { journal: { entry: updated }  };
     const response = fetch(fetch_url, {
       method: 'PUT',
       headers:  {

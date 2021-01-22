@@ -73,17 +73,3 @@ router.post("/login", function (req, res) {
     .catch((err) => res.status(500).json({ error: err }));
 });
 module.exports = router;
-
-
-   //   .then(
-    //     function loginSuccess(user) {
-    //       if (user) {
-    //         res.status(200).json({ user: user });
-    //       } else {
-    //         res.send("User not found");
-    //       }
-    //     }
-    //   ).catch(function(err) {
-    //     res.status(500).json({ error: err });
-    //   });
-    // });
