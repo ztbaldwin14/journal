@@ -46,18 +46,6 @@ router.post("/create", function (req, res) {
  ********************** */
 router.post("/login", function (req, res) {
   User.findOne({ where: { email: req.body.user.email } })
-    //   .then(
-    //     function loginSuccess(user) {
-    //       if (user) {
-    //         res.status(200).json({ user: user });
-    //       } else {
-    //         res.send("User not found");
-    //       }
-    //     }
-    //   ).catch(function(err) {
-    //     res.status(500).json({ error: err });
-    //   });
-    // });
     .then(function loginSuccess(user) {
       if (user) {
         bcrypt.compare(
@@ -85,3 +73,17 @@ router.post("/login", function (req, res) {
     .catch((err) => res.status(500).json({ error: err }));
 });
 module.exports = router;
+
+
+   //   .then(
+    //     function loginSuccess(user) {
+    //       if (user) {
+    //         res.status(200).json({ user: user });
+    //       } else {
+    //         res.send("User not found");
+    //       }
+    //     }
+    //   ).catch(function(err) {
+    //     res.status(500).json({ error: err });
+    //   });
+    // });

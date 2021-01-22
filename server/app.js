@@ -12,17 +12,17 @@ app.use(require('./middleware/headers'));
 
 app.use(express.json());
 
-/********************
- * Exposed route *
- ********************/
-app.use('/user', user);
+
 
 /********************
  * Protected route *
  ********************/
 // app.use(require('./middleware/validate-session'));
 app.use('/journal', journal);
-
+/********************
+ * Exposed route *
+ ********************/
+app.use('/user', user);
 // app.use("/calculator", calc);
 
 app.listen(3000, function(){

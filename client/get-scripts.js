@@ -18,8 +18,6 @@ function displayMine() {
         function (error) {
           console.error('Error:', error)
     })
-
-
     .then(function (response) {
       console.log(response)
 
@@ -28,9 +26,7 @@ function displayMine() {
         display.removeChild(display.firstChild)
       }
 
-
       if (response.length === 0) {
-
         let display = document.getElementById('journals')
         let header = document.createElement('h5')
 
@@ -41,7 +37,6 @@ function displayMine() {
       } else {
 
         for (i = 0; i < response.length; i++) {
-
           let display = document.getElementById('journals')
           let card = document.createElement('div')
           let body = document.createElement('div')
@@ -93,23 +88,29 @@ function displayMine() {
  *** DISPLAY ALL ***
  ************************** */
 function displayAll() {
+  console.log('displayAll')
+  const accessToken = localStorage.getItem('SessionToken')
   fetch('http://localhost:3000/journal/', {
     method: 'GET',
     headers: new Headers({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': accessToken
     })
   })
     .then(
       function(response) {
         return response.json()
-      })
-      .catch(
-        function (error) {
-          console.log(response)
-
-          let display = document.getElementById('journals')
-          for (i=0; i = display.childNodes.length; i++  {
-            display.removeChild(display.firstChild)
+    })
+    .catch(
+      function (error) {
+        console.error('Error:', error)
+    })
+    .then(function (response) {
+      console.log(response)
+    
+      let display = document.getElementById('journals')
+      for (i=0; i = display.childNodes.length; i++)  {
+      display.removeChild(display.firstChild)
           }
 
           if (response.length === 0) {
@@ -118,15 +119,16 @@ function displayAll() {
 
             display.appendChild(header)
             header.textContent = "There are not any posts yet!"
-            header.setAttribute("class", "noPosts")
+            header.setAttribute('class', 'noPost')
           } else {
+
             for (i = 0; i < response.length; i++) {
               let card = document.createElement('div')
               let body = document.createElement('div')
               let header = document.createElement('h5')
               let subtitle = document.createElement('h6')
               let para = document.createElement('p')
-              let display = document.createElement('journals')
+              let display = document.getElementById('journals')
 
               let current = response[i]
               let title = current.title;
@@ -191,7 +193,36 @@ function displayByTitle() {
         header.setAttribute("class", "noPosts")
       } else {
 
-        for
+        for (i = 0; i < response.length; i++) {
+          let card = document.createElement('div')
+          let body = document.createElement('div')
+          let header = document.createElement('h5')
+          let subtitle = document.createElement('h6')
+          let para = document.createElement('p')
+          let display = document.getElementById('journals')
+
+          let current = response[i]
+          let title = current.title;
+          let date = current.date;
+          let entry = current.entry;
+
+          display.appendChild(card)
+          card.appendChild(body)
+          body.appendChild(header)
+          body.appendChild(subtitle)
+          body.appendChild(para)
+
+          card.setAttribute('id', current.id)
+          card.setAttribute('class', 'card')
+          body.setAttribute('class', 'card-body')
+          header.setAttribute('class', 'card-title')
+          subtitle.setAttribute('class', 'card-subtitle mb-2 text-muted')
+          para.setAttribute('card', 'card-text')
+
+          header.textContent = title
+          subtitle.textContent = date
+          para.textContent = entry
+        }
       }
-    }
+    })
 }

@@ -22,12 +22,12 @@ router.post('/create', validateSession, (req, res) => {
   Journal.create(journalEntry)
     .then(journal => res.status(200).json(journal))
     .catch(err => res.status(500).json({ error: err }))
-})
+});
 
 /* ********************
  *** GET ALL ENTRIES ***
  ********************* */
-router.get("/", validateSession, (req, res) => {
+router.get("/", (req, res) => {
   Journal.findAll()
     .then(journals => res.status(200).json(journals))
     .catch(err => res.status(500).json({ error: err }))
